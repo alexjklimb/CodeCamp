@@ -30,27 +30,28 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         user_password = bcrypt.hash(parsed_body['password'][0])
         db.insertUser(user_name, user_password)
 
-        # #send a response to the client
+        # send a response to the client
         self.send_response(201)
         self.end_headers()
 
     def end_headers(self):
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Conrtol-Allow-Credentials", "true")
+        self.send_header("Access-Control-Allow-Credentials", "true")
+        self.send_header("Access-Control-Allow-Origin", self.headers["Origin"])
         BaseHTTPRequestHandler.end_headers(self)
 
     def handleCreateSession(self):
+        length = self.headers["Content-Length"]
         body = self.rfile.read(int(length)).decode("utf-8")
         parsed_body = parse_qs(body)
 
-        input_username = parsed_body['username'][0]
-        input_password = parsed_body['password'][0]
+        input_username = parsed_body['userName'][0]
+        input_password = parsed_body['Password'][0]
 
-        user = db.usernameExists(user_email)
+        user = db.usernameExists(input_username)
         print(user)
         if user != None:
-            if bcrypt.verify(user_password, user["password"]):
-                self.sessionData["userId"] = user["id"]
+            if bcrypt.verify(input_password, user["password"]):
+                # self.sessionData["userId"] = user["id"]
                 self.send_response(201)
                 self.end_headers()
             else:
