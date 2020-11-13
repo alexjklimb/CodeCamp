@@ -21,7 +21,7 @@ time, mark, audio, video {
 }
 header{
     position:fixed;
-    box-shadow:3px 3px 3px grey;
+    box-shadow:3px 3px 3px rgb(3, 3, 3);
     font-size:50px;
     color:white;
     display:flex;
@@ -32,11 +32,15 @@ header{
     background-color:rgb(226, 105, 25);
 }
 body{
+    background-color:rgb(110, 109, 108);
     height:100vh;
 }
 input{
     width:400px;
     height:40px;
+}
+label{
+    font-size:30px;
 }
 .container{
     display:flex;
@@ -49,6 +53,7 @@ input{
     h1{
         margin-bottom:150px;
     }
+    background-color:white;
     border-radius:30px;
     display:flex;
     justify-content:center;

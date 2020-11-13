@@ -24,8 +24,8 @@ time, mark, audio, video {
 
 header {
   position: fixed;
-  -webkit-box-shadow: 3px 3px 3px grey;
-          box-shadow: 3px 3px 3px grey;
+  -webkit-box-shadow: 3px 3px 3px #030303;
+          box-shadow: 3px 3px 3px #030303;
   font-size: 50px;
   color: white;
   display: -webkit-box;
@@ -43,12 +43,17 @@ header {
 }
 
 body {
+  background-color: #6e6d6c;
   height: 100vh;
 }
 
 input {
   width: 400px;
   height: 40px;
+}
+
+label {
+  font-size: 30px;
 }
 
 .container {
@@ -66,6 +71,7 @@ input {
 }
 
 .box {
+  background-color: white;
   border-radius: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
