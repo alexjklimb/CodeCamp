@@ -2,6 +2,14 @@
 var userBox = document.querySelector("#user-name");
 var passwordBox = document.querySelector("#password");
 var submitButton = document.querySelector("#submit");
+var moveToLogin = document.querySelector("#submit1");
+var box = document.querySelector(".box");
+var box1 = document.querySelector(".box1");
+
+moveToLogin.onclick = function() {
+    box.style.display = "none";
+    box1.style.display = "flex";
+}
 
 submitButton.onclick = function() {
     var data = "username=" + encodeURIComponent(userBox.value);

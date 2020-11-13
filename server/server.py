@@ -8,6 +8,11 @@ db = usersDB()
 
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
+    def handleNotAuthenticated(self):
+        self.send_response(401)
+        self.endheaders()
+        self.wfile.write(bytes("Not Authenticated", "utf-8"))
+
     def handleCreateUser(self):
         print("the HEADERS are:", self.headers)
 
@@ -34,13 +39,36 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         self.send_header("Access-Conrtol-Allow-Credentials", "true")
         BaseHTTPRequestHandler.end_headers(self)
 
+    def handleCreateSession(self):
+        body = self.rfile.read(int(length)).decode("utf-8")
+        parsed_body = parse_qs(body)
+
+        input_username = parsed_body['username'][0]
+        input_password = parsed_body['password'][0]
+
+        user = db.usernameExists(user_email)
+        print(user)
+        if user != None:
+            if bcrypt.verify(user_password, user["password"]):
+                self.sessionData["userId"] = user["id"]
+                self.send_response(201)
+                self.end_headers()
+            else:
+                self.handleNotAuthenticated
+    
+        else:
+            self.handleNotAuthenticated
+
+
 
     def do_POST(self):
 
         if self.path == "/users":
             self.handleCreateUser()
 
-        if self.path == "/sessions"
+        if self.path == "/sessions":
+            self.handleCreateSession()
+
         
 
 
