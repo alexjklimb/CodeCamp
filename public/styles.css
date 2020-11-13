@@ -127,4 +127,8 @@ label {
 .box1 #submit {
   margin-top: 10px;
 }
+
+.start {
+  display: none;
+}
 /*# sourceMappingURL=styles.css.map */
