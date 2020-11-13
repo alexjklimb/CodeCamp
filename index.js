@@ -14,6 +14,7 @@ var port = 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection', socket => {
+    console.log(socket)
     console.log("New WS Connection...");
 })
 

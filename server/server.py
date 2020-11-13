@@ -1,10 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs
-from planetsDB import planetsDB
+from usersDB import usersDB
 from passlib.hash import bcrypt
 import json
 
-db = planetsDB()
+db = usersDB()
 
 class MyHTTPRequestHandler(BaseHTTPRequestHandler):
 
@@ -21,23 +21,27 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         print("parsed BODY:", parsed_body)
 
         # #3. append the new data to our data
-        user_firstName = parsed_body['firstName'][0]
-        user_lastName = parsed_body['lastName'][0]
-        user_email = parsed_body['email'][0]
+        user_name = parsed_body['username'][0]
         user_password = bcrypt.hash(parsed_body['password'][0])
-        db.insertUser(user_firstName, user_lastName, user_email, user_password)
+        db.insertUser(user_name, user_password)
 
         # #send a response to the client
         self.send_response(201)
         self.end_headers()
 
+    def end_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Conrtol-Allow-Credentials", "true")
+        BaseHTTPRequestHandler.end_headers(self)
+
 
     def do_POST(self):
 
         if self.path == "/users":
-            self.handleCreateUser
+            self.handleCreateUser()
 
-
+        if self.path == "/sessions"
+        
 
 
 
