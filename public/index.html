@@ -5,6 +5,9 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id = "game-page">
+    
+  </div>
     <header>This is the best game ever made in the world</header>
 <div class="container">
 <div class="box">
@@ -14,7 +17,16 @@
   <label for="lname">Password:</label>
   <input type="text" id="password" name="lname"><br><br>
   <input type="submit" id="submit" value="Submit">
+  <input type="submit" id="move-to-login" value="Already have an account?">
 </div>
+<div class="box1">
+  <h1>Login</h1>
+  <label for="fname">Username:</label>
+    <input type="text" id="user-name1" name="fname"><br><br>
+    <label for="lname">Password:</label>
+    <input type="text" id="password1" name="lname"><br><br>
+    <input type="submit" id="submit1" value="Submit">
+  </div>
 </div>
 <script src="/socket.io/socket.io.js"></script>
 <script src="enemies.js"></script>

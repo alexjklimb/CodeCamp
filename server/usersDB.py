@@ -20,7 +20,7 @@ class usersDB:
         self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", data)
         self.connection.commit()
 
-    def emailExists(self, username):
+    def usernameExists(self, username):
         data = [username]
         self.cursor.execute("SELECT * FROM users WHERE username = ?", data)
         email = self.cursor.fetchone()
