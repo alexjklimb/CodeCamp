@@ -12,11 +12,12 @@ const io = socketio(server);
 var port = 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
-
+let counter = 0;
 io.on('connection', socket => {
-    console.log(socket)
-    console.log("New WS Connection...");
-})
+    counter += 1;
+    io.emit("amount", counter);
+    
+});
 
 // have our app start listening
 server.listen(port, () => console.log(`Server running on port ${port}`));
