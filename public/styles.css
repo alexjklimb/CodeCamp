@@ -28,9 +28,7 @@ header {
           box-shadow: 3px 3px 3px #030303;
   font-size: 50px;
   color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -73,9 +71,7 @@ label {
 .box {
   background-color: white;
   border-radius: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -129,6 +125,34 @@ label {
 }
 
 #start {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 2;
 }
+
+#bullet {
+  border-radius: 50%;
+  background-color: gray;
+  width: 5px;
+  height: 5px;
+}
+
+.health {
+  height: 10px;
+  min-width: 60px;
+  border-radius: 4px;
+  background-color: grey;
+  position: absolute;
+  border: 2px solid darkgrey;
+}
+
+.filled {
+  /* border: px solid transparent; */
+  border-radius: 4px;
+  height: 6px;
+  width: 60px;
+  background-color: green;
+}
+
 /*# sourceMappingURL=styles.css.map */

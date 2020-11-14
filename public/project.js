@@ -8,6 +8,9 @@ var box = document.querySelector(".box");
 var box1 = document.querySelector(".box1");
 var userLoginBox = document.querySelector("#user-name1");
 var passwordLoginBox = document.querySelector("#password1");
+var header = document.querySelector("#header");
+
+
 
 moveToLogin.onclick = function() {
     box.style.display = "none";
@@ -43,10 +46,12 @@ login.onclick = function() {
     }
     }).then(function (response){
         if (response.status == 201) {
-
+            console.log(response.statusText);
+            socket.emit("joined", response.statusText)
             gamePage.style.display = "flex";
             box.style.display = "none";
             box1.style.display = "none";
-        }
+            header.style.display = "none";
+        }e
     });
 };

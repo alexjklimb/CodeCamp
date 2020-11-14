@@ -28,7 +28,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         # #3. append the new data to our data
         user_name = parsed_body['username'][0]
         user_password = bcrypt.hash(parsed_body['password'][0])
-        db.insertUser(user_name, user_password)
+        db.insertUser(user_name, user_password) 
 
         # send a response to the client
         self.send_response(201)
@@ -52,7 +52,7 @@ class MyHTTPRequestHandler(BaseHTTPRequestHandler):
         if user != None:
             if bcrypt.verify(input_password, user["password"]):
                 # self.sessionData["userId"] = user["id"]
-                self.send_response(201)
+                self.send_response(201, user["username"])
                 self.end_headers()
             else:
                 self.handleNotAuthenticated
